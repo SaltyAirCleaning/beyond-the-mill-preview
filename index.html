@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beyond The Mill Design — Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Mr+Dafoe&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4EFE6; --cream2:#EBE3D5; --paper:#FBF8F2;
+    --ink:#23211C; --muted:#6F685C; --line:#DDD5C6;
+    --ever:#2C3A30; --ever-deep:#212A23; --brass:#A98A57;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;line-height:1.8;-webkit-font-smoothing:antialiased}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .serif{font-family:'Cormorant Garamond',Georgia,serif}
+  .eyebrow{font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.32em;font-size:11.5px;color:var(--brass)}
+  .btn{display:inline-block;font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.22em;font-size:11.5px;padding:16px 32px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;background:transparent;transition:.35s;cursor:pointer}
+  .btn:hover{background:var(--ink);color:var(--cream)}
+  .btn.light{border-color:rgba(255,255,255,.85);color:#fff}
+  .btn.light:hover{background:#fff;color:var(--ink)}
+  .btn.fill{background:var(--brass);border-color:var(--brass);color:#fff}
+  .btn.fill:hover{background:transparent;color:#fff;border-color:#fff}
+  .btn.fill.dark:hover{color:var(--ever);background:#fff;border-color:#fff}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:50;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;max-width:1320px;margin:0 auto;padding:20px 40px}
+  .nav ul{list-style:none;display:flex;gap:30px}
+  .nav a{font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.18em;font-size:11.5px;color:var(--ink);text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent;transition:.3s}
+  .nav a:hover{border-color:var(--brass);color:var(--ever)}
+  .nav a.inq{color:var(--brass)}
+  .nav .right{justify-content:flex-end}
+  .brand{text-align:center;line-height:1}
+  .brand .name{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;letter-spacing:.26em;color:var(--ink);white-space:nowrap}
+  .brand .sub{font-family:'Jost',sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:.4em;font-size:9px;color:var(--muted);margin-top:6px}
+
+  /* HERO */
+  .hero{position:relative;height:92vh;min-height:620px}
+  .hero img{position:absolute;inset:0}
+  .hero .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,24,19,.72) 0%,rgba(22,24,19,.34) 40%,rgba(22,24,19,.10) 66%,rgba(22,24,19,.20) 100%)}
+  .hero .inner{position:absolute;left:0;right:0;bottom:8%;text-align:center;color:#fff;padding:0 24px}
+  .hero .eyebrow{color:rgba(255,255,255,.95);text-shadow:0 1px 12px rgba(0,0,0,.45)}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,4.7vw,62px);line-height:1.1;margin:18px auto 28px;max-width:17ch;text-shadow:0 1px 20px rgba(0,0,0,.4)}
+  .hero .ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  /* SECTION SHELL */
+  section{padding:104px 40px}
+  .wrap{max-width:1240px;margin:0 auto}
+  .center{text-align:center}
+  .sec-head{text-align:center;max-width:780px;margin:0 auto 60px}
+  .sec-head h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,3.4vw,46px);line-height:1.12;margin-top:14px}
+  .sec-head p{color:var(--muted);font-size:16px;margin-top:20px}
+
+  /* INTRO */
+  .intro{background:var(--cream)}
+  .intro .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:56px;align-items:center;max-width:1180px;margin:0 auto}
+  .intro .lead{text-align:left}
+  .intro .collage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:206px 206px;gap:14px}
+  .intro .collage .tall{grid-row:1 / span 2}
+  .intro .statement{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(24px,2.5vw,35px);line-height:1.34;margin:18px 0 0}
+  .intro p.body{margin:22px 0 0;color:var(--muted);font-size:16px}
+  .rule{width:46px;height:1px;background:var(--brass);margin:30px 0 0}
+
+  /* FEATURED */
+  .featured{background:var(--paper)}
+  .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+  .card{position:relative;overflow:hidden}
+  .card .ph{position:relative;aspect-ratio:4/5;overflow:hidden}
+  .card .ph img{transition:transform 1.1s ease}
+  .card:hover .ph img{transform:scale(1.05)}
+  .card .label{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(33,42,35,.78);backdrop-filter:blur(3px);color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .card .label .nm{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;line-height:1.1}
+  .card .label .vp{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:rgba(255,255,255,.85);white-space:nowrap}
+  .card .place{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:11px;color:var(--muted);margin-top:16px;text-align:center}
+
+  /* SERVICES */
+  .services{background:var(--cream)}
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:34px 40px;margin-top:8px}
+  .svc h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:23px;margin-bottom:4px}
+  .svc .ln{width:30px;height:1px;background:var(--brass);margin:12px 0 14px}
+  .svc p{color:var(--muted);font-size:15px}
+
+  /* CREDIBILITY */
+  .cred{background:var(--ever);color:#EFE7D7;text-align:center}
+  .cred .eyebrow{color:var(--brass)}
+  .cred h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,40px);color:#fff;margin:14px 0 0}
+  .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 56px;margin-top:52px}
+  .stat{min-width:120px}
+  .stat .n{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:34px;color:var(--brass);line-height:1}
+  .stat .l{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:10.5px;color:rgba(239,231,215,.82);margin-top:12px}
+
+  /* MEET */
+  .meet{background:#EFE6D5;padding:96px 40px}
+  .meet .row{display:grid;grid-template-columns:0.9fr 1.1fr;align-items:center;gap:5%;max-width:1160px;margin:0 auto}
+  .meet .media{display:flex;justify-content:center}
+  .meet .portrait{width:min(400px,82%);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 1px rgba(169,138,87,.55),0 22px 55px rgba(60,45,25,.18)}
+  .meet .txt{display:flex;flex-direction:column;justify-content:center;padding:0}
+  .meet .txt h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,2.8vw,40px);line-height:1.16;margin:16px 0 22px}
+  .meet .txt p{color:var(--muted);font-size:16px;margin-bottom:18px;max-width:50ch}
+  .meet .sig{font-family:'Mr Dafoe',cursive;font-size:40px;color:var(--ever);margin-top:12px;line-height:1}
+  .meet .sig small{display:block;font-family:'Jost',sans-serif;font-style:normal;text-transform:uppercase;letter-spacing:.22em;font-size:10px;color:var(--muted);margin-top:10px}
+
+  /* PROCESS */
+  .process{background:var(--paper)}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-top:8px}
+  .step .no{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--brass);font-weight:500}
+  .step h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;margin:6px 0 12px}
+  .step .ln{width:34px;height:1px;background:var(--line);margin:0 0 16px}
+  .step p{color:var(--muted);font-size:15px}
+
+  /* LOCATIONS */
+  .where{background:var(--ever);color:#EFE7D7;text-align:center}
+  .where .eyebrow{color:var(--brass)}
+  .where h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,3.4vw,46px);margin:16px 0 26px;color:#fff}
+  .where p{max-width:64ch;margin:0 auto;color:rgba(239,231,215,.82);font-size:16px}
+  .regions{display:flex;flex-wrap:nowrap;justify-content:center;gap:0 clamp(18px,2.2vw,32px);margin:42px auto 36px;max-width:none}
+  .regions span{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.5vw,21px);color:#fff;position:relative;white-space:nowrap}
+  .regions span:not(:last-child)::after{content:"·";position:absolute;right:calc(clamp(18px,2.2vw,32px) * -0.5);color:var(--brass)}
+  .where .fine{font-size:12.5px;letter-spacing:.04em;color:rgba(239,231,215,.6);margin:0 auto;text-transform:none}
+
+  /* FINAL CTA */
+  .cta{background:var(--cream2);text-align:center}
+  .cta h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,3.6vw,48px);line-height:1.1;max-width:18ch;margin:16px auto 0}
+  .cta p{color:var(--muted);font-size:16px;max-width:52ch;margin:22px auto 34px}
+
+  /* FOOTER */
+  footer{background:var(--ever-deep);color:#CFC7B6;padding:74px 40px 40px}
+  .fgrid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;align-items:start}
+  footer .name{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:23px;letter-spacing:.22em;color:#fff}
+  footer .by{font-family:'Mr Dafoe',cursive;font-size:24px;color:var(--brass);margin-top:6px}
+  footer .tag{font-size:12.5px;letter-spacing:.04em;color:rgba(207,199,182,.7);margin-top:14px;max-width:34ch}
+  footer h4{font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.22em;font-size:11px;color:var(--brass);margin-bottom:16px}
+  footer a{display:block;color:#CFC7B6;text-decoration:none;font-size:14px;margin-bottom:9px;transition:.3s}
+  footer a:hover{color:#fff}
+  .fbar{max-width:1240px;margin:54px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;font-size:12px;color:rgba(207,199,182,.6);letter-spacing:.04em}
+  .badge{position:fixed;bottom:14px;right:16px;z-index:99;background:var(--brass);color:#fff;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:7px 12px;border-radius:2px;opacity:.9}
+
+  @media(max-width:860px){
+    .intro .split,.meet .row{grid-template-columns:1fr}
+    .intro .collage{margin-top:32px}
+    .grid3,.steps{grid-template-columns:1fr}
+    .nav{grid-template-columns:auto 1fr;gap:14px}
+    .nav ul:first-child{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <ul>
+      <li><a href="#work">Portfolio</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+    <div class="brand">
+      <div class="name">BEYOND THE MILL DESIGN</div>
+      <div class="sub">Interior Design</div>
+    </div>
+    <ul class="right">
+      <li><a href="#about">About</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a class="inq" href="#inquire">Inquire</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="hero">
+  <img src="img/hero.jpg" alt="Sunroom living room with warm neutral furnishings and garden views">
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="eyebrow">Residential Interior Design &amp; Renovation</div>
+    <h1 class="serif">Classic, comfortable interiors designed for homes that feel personal, polished &amp; lived-in.</h1>
+    <div class="ctas">
+      <a class="btn fill dark" href="#inquire">Inquire About a Project</a>
+      <a class="btn light" href="#work">View the Portfolio</a>
+    </div>
+  </div>
+</div>
+
+<section class="intro">
+  <div class="split">
+    <div class="lead">
+      <div class="eyebrow">Welcome</div>
+      <p class="statement serif">Beyond The Mill Design creates warm, timeless interiors — built around the people who live in them.</p>
+      <p class="body">From full renovations and kitchens to furnishings and custom millwork, we create rooms that feel collected, not decorated — rooted in natural materials, thoughtful craftsmanship, trusted trade relationships, and the way your family really lives.</p>
+      <div class="rule"></div>
+    </div>
+    <div class="collage">
+      <div class="tall"><img src="img/welcome-1.jpg" alt="Open-concept kitchen, living, and fireplace"></div>
+      <img src="img/welcome-2.jpg" alt="Layered pillows and drapery detail">
+      <img src="img/welcome-3.jpg" alt="Custom glass chandelier over a classic staircase">
+    </div>
+  </div>
+</section>
+
+<section class="featured" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Selected work</div>
+      <h2 class="serif">Featured projects</h2>
+    </div>
+    <div class="grid3">
+      <div>
+        <div class="card">
+          <div class="ph"><img src="img/feat-1.jpg" alt="Classic Virginia living and dining room with stone fireplace"></div>
+          <div class="label"><span class="nm serif">Classic Virginia Living</span><span class="vp">View project →</span></div>
+        </div>
+        <div class="place">Full-home design</div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="ph"><img src="img/feat-2.jpg" alt="White oak kitchen with marble waterfall island"></div>
+          <div class="label"><span class="nm serif">White Oak Kitchen</span><span class="vp">View project →</span></div>
+        </div>
+        <div class="place">Kitchen &amp; millwork</div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="ph"><img src="img/feat-3.jpg" alt="Open-concept kitchen and living renovation"></div>
+          <div class="label"><span class="nm serif">Open-Concept Renovation</span><span class="vp">View project →</span></div>
+        </div>
+        <div class="place">Whole-home transition</div>
+      </div>
+    </div>
+    <div class="center" style="margin-top:54px"><a class="btn" href="#">View full portfolio</a></div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What we do</div>
+      <h2 class="serif">Services</h2>
+      <p>Beyond The Mill is as comfortable with the construction conversation as with fabrics and finishes. We guide the whole home — layout, cabinetry, materials, lighting, and scale through to furnishings and the final styled details — in close collaboration with trusted builders and trades.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <h3 class="serif">Full-Service Interior Design</h3>
+        <div class="ln"></div>
+        <p>Cohesive, end-to-end design for the whole home — from first concept to the final styled room.</p>
+      </div>
+      <div class="svc">
+        <h3 class="serif">Renovation &amp; Remodel Design</h3>
+        <div class="ln"></div>
+        <p>Layouts, finishes, and the construction decisions behind them — planned and managed alongside your trades.</p>
+      </div>
+      <div class="svc">
+        <h3 class="serif">Kitchens &amp; Baths</h3>
+        <div class="ln"></div>
+        <p>Cabinetry, materials, and millwork designed to work beautifully and last for years.</p>
+      </div>
+      <div class="svc">
+        <h3 class="serif">Furnishings &amp; Styling</h3>
+        <div class="ln"></div>
+        <p>Furniture, textiles, lighting, and art — the lived-in details that make a house feel like home.</p>
+      </div>
+      <div class="svc">
+        <h3 class="serif">Custom Millwork &amp; Furniture</h3>
+        <div class="ln"></div>
+        <p>Built-ins and bespoke pieces, designed and crafted specifically for your space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="about">
+  <div class="row">
+    <div class="media">
+      <div class="portrait"><img src="https://static.wixstatic.com/media/a0bb2b_3e01b8cb6d084d5195e353aed743e5ec~mv2.jpg/v1/fill/w_700,h_700,al_c,q_90,enc_avif,quality_auto/julie.jpg" alt="Julie Davis-Gerard, founder and principal designer"></div>
+    </div>
+    <div class="txt">
+      <div class="eyebrow">Meet the designer</div>
+      <h2 class="serif">Helping families create homes they never want to leave.</h2>
+      <p>For me, design has always been personal. I love getting to know a family — how they gather, how they unwind, what makes a house feel like theirs — and shaping spaces around that.</p>
+      <p>With more than 30 years in the industry, I bring a practiced eye, deep trade relationships, and a highly personal approach to every project — rooted in natural materials, thoughtful craftsmanship, and the belief that a home should feel both beautiful and truly livable.</p>
+      <div class="sig">Julie Davis-Gerard<small>Founder &amp; Principal Designer · ASID Allied Member</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="cred">
+  <div class="wrap">
+    <div class="eyebrow">Why Beyond The Mill</div>
+    <h2 class="serif">Experience you can build on.</h2>
+    <div class="stats">
+      <div class="stat"><div class="n serif">30+</div><div class="l">Years in design</div></div>
+      <div class="stat"><div class="n serif">100+</div><div class="l">Homes &amp; spaces</div></div>
+      <div class="stat"><div class="n serif">ASID</div><div class="l">Allied member</div></div>
+      <div class="stat"><div class="n serif">Published</div><div class="l">In print &amp; online</div></div>
+      <div class="stat"><div class="n serif">Trusted</div><div class="l">Builder &amp; trade partners</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How we work</div>
+      <h2 class="serif">Our process</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="no serif">01</div>
+        <h3 class="serif">Consultation</h3>
+        <div class="ln"></div>
+        <p>It starts with a conversation in your home — how you live, what you love, what you want it to feel like. No pressure, lots of listening.</p>
+      </div>
+      <div class="step">
+        <div class="no serif">02</div>
+        <h3 class="serif">Design &amp; sourcing</h3>
+        <div class="ln"></div>
+        <p>Layouts, finishes, custom millwork, and furnishings come together into one clear vision — sourced and managed so you don't have to.</p>
+      </div>
+      <div class="step">
+        <div class="no serif">03</div>
+        <h3 class="serif">Build &amp; reveal</h3>
+        <div class="ln"></div>
+        <p>We work shoulder to shoulder with our trusted trades to bring it to life, then hand you back a home that feels finished, personal, and entirely yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="where" id="locations">
+  <div class="wrap">
+    <div class="eyebrow">Where we work</div>
+    <h2 class="serif">Designing for homes across the country.</h2>
+    <p>Beyond The Mill Design takes on residential projects nationwide. Over the years, much of our work has centered on a handful of communities we've come to know especially well — places where long-standing relationships with trusted builders and trades make every project smoother:</p>
+    <div class="regions">
+      <span>Charlottesville</span>
+      <span>Northern Virginia</span>
+      <span>Washington, D.C.</span>
+      <span>Southwest Florida</span>
+      <span>Atlanta</span>
+      <span>North Carolina</span>
+    </div>
+    <p class="fine">Southwest Florida includes Sarasota, Longboat Key, Bradenton, and nearby coastal communities.</p>
+  </div>
+</section>
+
+<section class="cta" id="inquire">
+  <div class="wrap">
+    <div class="eyebrow">Let's talk</div>
+    <h2 class="serif">Let's begin your home design conversation.</h2>
+    <p>Tell us about your home and what you're hoping to create — we'd love to hear from you.</p>
+    <a class="btn fill" href="mailto:beyondthemilldesign@gmail.com">Inquire About a Project</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fgrid">
+    <div>
+      <div class="name">BEYOND THE MILL DESIGN</div>
+      <div class="by">by Julie Davis-Gerard</div>
+      <div class="tag">Residential interior design &amp; renovation · 30+ years · ASID Allied Member</div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="#work">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#process">Our Process</a>
+      <a href="#about">About</a>
+      <a href="#locations">Locations</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="#">Instagram</a>
+      <a href="mailto:beyondthemilldesign@gmail.com">beyondthemilldesign@gmail.com</a>
+      <a href="#inquire">Inquire about a project</a>
+    </div>
+  </div>
+  <div class="fbar">
+    <span>© 2026 Beyond The Mill Design. All rights reserved.</span>
+    <span>Virginia · Washington, D.C. · Florida · Atlanta · North Carolina</span>
+  </div>
+</footer>
+
+<div class="badge">Prototype</div>
+
+</body>
+</html>
