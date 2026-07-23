@@ -39,7 +39,12 @@
       <a class="btn" href="portfolio.html">View the Portfolio</a>
     </div>
   </div>
-  <div class="photo"><img src="img/hero.jpg" alt="Sunroom living room with warm neutral furnishings and garden views"></div>
+  <div class="photo" id="heroSlides">
+    <img class="is-active" src="img/hero.jpg" alt="Sunroom living room with warm neutral furnishings and garden views">
+    <img src="img/florida/living-1.jpg" alt="Two-storey living room with vaulted ceiling and full-height glass">
+    <img src="img/projects/landsdowne/00.jpg" alt="Great room with hand-laid stone fireplace">
+    <img src="img/florida/kitchen-oak.jpg" alt="White oak kitchen with marble waterfall island">
+  </div>
 </div>
 
 <section class="intro">
@@ -254,6 +259,21 @@
 </footer>
 
 <div class="badge">Prototype</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var slides = document.querySelectorAll('#heroSlides img');
+  if (slides.length < 2) return;
+  var i = 0;
+  setInterval(function(){
+    slides[i].classList.remove('is-active');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('is-active');
+  }, 15000);
+})();
+</script>
 
 </body>
 </html>

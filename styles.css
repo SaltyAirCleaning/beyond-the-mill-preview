@@ -41,8 +41,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,239,230,.97);border-
 .hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,3.5vw,52px);line-height:1.12;color:var(--ink);margin:22px 0 0;max-width:15ch}
 .hero .lede{color:var(--muted);font-size:16px;line-height:1.75;margin-top:22px;max-width:34ch}
 .hero .ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
-.hero .photo{position:relative;overflow:hidden}
-.hero .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .photo{position:relative;overflow:hidden;background:var(--cream2)}
+.hero .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease-in-out}
+.hero .photo img.is-active{opacity:1}
+@media(prefers-reduced-motion:reduce){.hero .photo img{transition:none}}
 @media(max-width:860px){
   .hero{grid-template-columns:1fr;min-height:0}
   .hero .photo{height:46vh;min-height:300px;order:1}
