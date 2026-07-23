@@ -20,11 +20,11 @@
     </ul>
     <div class="brand"><a href="index.html">
       <div class="name">BEYOND THE MILL DESIGN</div>
-      <div class="sub">Interior Design</div>
+      <div class="sub">by Julie Davis-Gerard</div>
     </a></div>
     <ul class="right">
       <li><a href="about.html">About</a></li>
-      <li><a href="index.html#locations">Locations</a></li>
+      <li><a href="team.html">Team</a></li>
       <li><a class="inq active" href="contact.html">Inquire</a></li>
     </ul>
   </nav>
@@ -48,6 +48,18 @@
         <p style="color:var(--muted);font-size:15.5px;margin-bottom:32px">Whether you're beginning a renovation, furnishing a new home, refreshing a room, or planning a full-scale project — we'd love to hear more.</p>
 
         <form id="inquiry">
+          <div class="field">
+            <label for="heard">How did you hear about us?</label>
+            <select id="heard" name="heard">
+              <option>Referral from a friend or client</option>
+              <option>Builder, architect, or trade partner</option>
+              <option>Instagram</option>
+              <option>Google or web search</option>
+              <option>Publication or press</option>
+              <option>Returning client</option>
+              <option>Other</option>
+            </select>
+          </div>
           <div class="field-row">
             <div class="field">
               <label for="name">Name</label>
@@ -139,6 +151,7 @@
       <a href="services.html">Services</a>
       <a href="index.html#process">Our Process</a>
       <a href="about.html">About</a>
+      <a href="team.html">Our Team</a>
       <a href="index.html#locations">Locations</a>
     </div>
     <div>
@@ -161,6 +174,7 @@ document.getElementById('inquiry').addEventListener('submit', function(e){
   e.preventDefault();
   var v = function(id){ return (document.getElementById(id).value || '').trim(); };
   var body = [
+    'How they heard about us: ' + v('heard'),
     'Name: ' + v('name'),
     'Email: ' + v('email'),
     'Phone: ' + v('phone'),
