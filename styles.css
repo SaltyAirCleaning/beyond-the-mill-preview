@@ -37,9 +37,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,239,230,.97);border-
 /* HOME HERO — modern split (text on a clean panel, photo shown uncluttered) */
 .hero{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);min-height:min(86vh,760px);background:var(--cream)}
 .hero .panel{display:flex;flex-direction:column;justify-content:center;padding:6% 6.5%;position:relative}
-.hero .panel::before{content:"";position:absolute;left:6.5%;top:calc(6% + 2px);width:40px;height:1px;background:var(--brass);opacity:0}
-.hero .eyebrow{color:var(--brass)}
-.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,3.3vw,42px);line-height:1.16;color:var(--ink);margin:22px 0 0;max-width:490px}
+.hero .hero-card{background:rgba(22,24,22,.82);padding:38px 40px 42px;border-radius:6px}
+.hero .eyebrow{color:#D8C7A2}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(27px,2.85vw,37px);line-height:1.18;color:#fff;margin:18px 0 0;max-width:none}
 .hero .lede{color:var(--muted);font-size:16px;line-height:1.75;margin-top:22px;max-width:34ch}
 .hero .ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
 .hero .photo{position:relative;overflow:hidden;background:var(--cream2)}
