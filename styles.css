@@ -35,7 +35,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,239,230,.97);border-
 .brand .sub{font-family:'Jost',sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:.4em;font-size:9px;color:var(--muted);margin-top:6px}
 
 /* HOME HERO — modern split (text on a clean panel, photo shown uncluttered) */
-.hero{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);min-height:min(86vh,760px);background:var(--cream)}
+.hero{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);min-height:min(86vh,760px);background:var(--sage-tint)}
 .hero .panel{display:flex;flex-direction:column;justify-content:center;padding:6% 6.5%;position:relative}
 .hero .hero-card{background:rgba(22,24,22,.82);padding:38px 40px 42px;border-radius:6px}
 .hero .eyebrow{color:#D8C7A2}
@@ -70,7 +70,7 @@ section{padding:104px 40px}
 .sec-head p{color:var(--muted);font-size:16px;margin-top:20px}
 
 /* INTRO (home) */
-.intro{background:var(--sage-tint)}
+.intro{background:var(--cream)}
 .intro .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:56px;align-items:center;max-width:1180px;margin:0 auto}
 .intro .lead{text-align:left}
 .intro .collage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:206px 206px;gap:14px}
@@ -262,3 +262,8 @@ footer a:hover{color:#fff}
 .svc-card p{color:var(--muted);font-size:14.5px}
 @media(max-width:900px){.svc-card{flex:0 1 calc(50% - 16px)}}
 @media(max-width:620px){.svc-card{flex:0 1 100%}}
+
+/* Soft rounded corners on content photos */
+.pcard .ph, .svc-card .ph, .proj-media .main, .proj-media .inset,
+.svc-row .media, .gallery figure img, .intro .collage img,
+.card .ph { border-radius: 8px; }
