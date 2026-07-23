@@ -33,14 +33,21 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,239,230,.97);border-
 .brand .name{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;letter-spacing:.26em;color:var(--ink);white-space:nowrap}
 .brand .sub{font-family:'Jost',sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:.4em;font-size:9px;color:var(--muted);margin-top:6px}
 
-/* HOME HERO */
-.hero{position:relative;height:92vh;min-height:620px}
-.hero img{position:absolute;inset:0}
-.hero .scrim{position:absolute;inset:0;background:radial-gradient(ellipse 82% 60% at 50% 74%,rgba(13,15,11,.6) 0%,rgba(13,15,11,.46) 34%,rgba(13,15,11,.2) 60%,rgba(13,15,11,0) 80%)}
-.hero .inner{position:absolute;left:0;right:0;bottom:8%;text-align:center;color:#fff;padding:0 24px}
-.hero .eyebrow{color:#fff;font-weight:500;text-shadow:0 1px 3px rgba(0,0,0,.75),0 0 16px rgba(0,0,0,.75)}
-.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,3.8vw,50px);line-height:1.15;margin:16px auto 26px;max-width:19ch;text-shadow:0 0 2px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.6),0 0 24px rgba(0,0,0,.6)}
-.hero .ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+/* HOME HERO — modern split (text on a clean panel, photo shown uncluttered) */
+.hero{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);min-height:min(86vh,760px);background:var(--cream)}
+.hero .panel{display:flex;flex-direction:column;justify-content:center;padding:6% 6.5%;position:relative}
+.hero .panel::before{content:"";position:absolute;left:6.5%;top:calc(6% + 2px);width:40px;height:1px;background:var(--brass);opacity:0}
+.hero .eyebrow{color:var(--brass)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,3.5vw,52px);line-height:1.12;color:var(--ink);margin:22px 0 0;max-width:15ch}
+.hero .lede{color:var(--muted);font-size:16px;line-height:1.75;margin-top:22px;max-width:34ch}
+.hero .ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
+.hero .photo{position:relative;overflow:hidden}
+.hero .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero .photo{height:46vh;min-height:300px;order:1}
+  .hero .panel{padding:52px 30px 56px;order:2}
+}
 
 /* PAGE BANNER (interior pages) */
 .banner{position:relative;height:46vh;min-height:340px}
