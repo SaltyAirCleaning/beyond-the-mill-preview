@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inquire — Beyond The Mill Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Mr+Dafoe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <ul>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="index.html#process">Process</a></li>
+    </ul>
+    <div class="brand"><a href="index.html">
+      <div class="name">BEYOND THE MILL DESIGN</div>
+      <div class="sub">Interior Design</div>
+    </a></div>
+    <ul class="right">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#locations">Locations</a></li>
+      <li><a class="inq active" href="contact.html">Inquire</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="banner">
+  <img src="img/welcome-1.jpg" alt="Open-concept living room and kitchen">
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="eyebrow">Let's talk</div>
+    <h1 class="serif">Let's begin your home design conversation.</h1>
+  </div>
+</div>
+
+<section class="services">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow">Project inquiry</div>
+        <h2 class="serif" style="font-size:clamp(26px,2.6vw,34px);margin:14px 0 10px">Tell us about your home</h2>
+        <p style="color:var(--muted);font-size:15.5px;margin-bottom:32px">Whether you're beginning a renovation, furnishing a new home, refreshing a room, or planning a full-scale project — we'd love to hear more.</p>
+
+        <form id="inquiry">
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Phone (optional)</label>
+              <input id="phone" name="phone" type="tel">
+            </div>
+            <div class="field">
+              <label for="location">Project location</label>
+              <input id="location" name="location" type="text" placeholder="City, State">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="type">Project type</label>
+              <select id="type" name="type">
+                <option>Full-home design</option>
+                <option>Renovation or remodel</option>
+                <option>Kitchen or bath</option>
+                <option>Furnishings &amp; styling</option>
+                <option>Custom millwork or furniture</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="timing">Ideal timing</label>
+              <select id="timing" name="timing">
+                <option>As soon as possible</option>
+                <option>Within 3 months</option>
+                <option>3–6 months</option>
+                <option>6+ months / planning ahead</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Tell us about the project</label>
+            <textarea id="message" name="message" placeholder="The rooms involved, what you're hoping to change, and how you'd like the space to feel."></textarea>
+          </div>
+          <button class="btn solid" type="submit">Send Inquiry</button>
+          <p class="form-note">This opens your email app with the details filled in — or write us directly at <a href="mailto:beyondthemilldesign@gmail.com" style="color:var(--ever)">beyondthemilldesign@gmail.com</a>.</p>
+        </form>
+      </div>
+
+      <div>
+        <div class="info-block">
+          <h4>Email</h4>
+          <a href="mailto:beyondthemilldesign@gmail.com">beyondthemilldesign@gmail.com</a>
+        </div>
+        <div class="info-block">
+          <h4>Where we work</h4>
+          <p>Charlottesville, Virginia</p>
+          <p>Northern Virginia &amp; metro Washington, D.C.</p>
+          <p>Southwest Florida — Sarasota, Longboat Key, Bradenton</p>
+          <p>Atlanta metro</p>
+          <p>North Carolina</p>
+          <p style="margin-top:12px;font-size:13.5px">We take on residential projects nationwide, with much of our work centered in these communities.</p>
+        </div>
+        <div class="info-block">
+          <h4>What to expect</h4>
+          <p>We'll reply personally, usually within a couple of business days, with a few questions and next steps for an initial consultation.</p>
+        </div>
+        <div class="info-block">
+          <h4>Follow along</h4>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fgrid">
+    <div>
+      <div class="name">BEYOND THE MILL DESIGN</div>
+      <div class="by">by Julie Davis-Gerard</div>
+      <div class="tag">Residential interior design &amp; renovation · 30+ years · ASID Allied Member</div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="index.html#process">Our Process</a>
+      <a href="about.html">About</a>
+      <a href="index.html#locations">Locations</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="#">Instagram</a>
+      <a href="mailto:beyondthemilldesign@gmail.com">beyondthemilldesign@gmail.com</a>
+      <a href="contact.html">Inquire about a project</a>
+    </div>
+  </div>
+  <div class="fbar">
+    <span>© 2026 Beyond The Mill Design. All rights reserved.</span>
+    <span>Virginia · Washington, D.C. · Florida · Atlanta · North Carolina</span>
+  </div>
+</footer>
+
+<div class="badge">Prototype</div>
+
+<script>
+document.getElementById('inquiry').addEventListener('submit', function(e){
+  e.preventDefault();
+  var v = function(id){ return (document.getElementById(id).value || '').trim(); };
+  var body = [
+    'Name: ' + v('name'),
+    'Email: ' + v('email'),
+    'Phone: ' + v('phone'),
+    'Project location: ' + v('location'),
+    'Project type: ' + v('type'),
+    'Ideal timing: ' + v('timing'),
+    '',
+    'About the project:',
+    v('message')
+  ].join('\n');
+  window.location.href = 'mailto:beyondthemilldesign@gmail.com'
+    + '?subject=' + encodeURIComponent('Project inquiry — ' + (v('name') || 'Website'))
+    + '&body=' + encodeURIComponent(body);
+});
+</script>
+
+</body>
+</html>
