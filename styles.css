@@ -238,3 +238,17 @@ footer a:hover{color:#fff}
   .proj-item.flip .proj-media{order:0}
   .proj-media .inset{display:none}
 }
+
+/* SERVICES CARDS (homepage) — photo-led, centred so 5 items balance */
+.svc-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:44px 30px;margin-top:8px}
+.svc-card{flex:0 1 calc(33.333% - 20px);min-width:250px;max-width:370px;text-decoration:none;color:inherit;display:block}
+.svc-card .ph{aspect-ratio:4/3;overflow:hidden}
+.svc-card .ph img{transition:transform 1.15s ease}
+.svc-card:hover .ph img{transform:scale(1.05)}
+.svc-card .no{font-family:'Jost',sans-serif;font-weight:400;letter-spacing:.3em;font-size:10px;color:var(--brass);margin-top:20px}
+.svc-card h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;line-height:1.15;margin-top:8px}
+.svc-card .ln{width:30px;height:1px;background:var(--brass);margin:13px 0 14px;transition:width .35s ease}
+.svc-card:hover .ln{width:52px}
+.svc-card p{color:var(--muted);font-size:14.5px}
+@media(max-width:900px){.svc-card{flex:0 1 calc(50% - 16px)}}
+@media(max-width:620px){.svc-card{flex:0 1 100%}}
