@@ -213,3 +213,28 @@ footer a:hover{color:#fff}
 .team-card h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px}
 .team-card .role{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:10.5px;color:var(--brass);margin-top:9px}
 .team-card p{color:var(--muted);font-size:14.5px;margin-top:18px;text-align:left}
+
+/* PORTFOLIO — editorial alternating rows */
+.proj-list{display:flex;flex-direction:column;gap:120px}
+.proj-item{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:60px;align-items:center;text-decoration:none;color:inherit}
+.proj-item.flip .proj-media{order:2}
+.proj-media{position:relative}
+.proj-media .main{aspect-ratio:4/3;overflow:hidden}
+.proj-media .main img{transition:transform 1.2s ease}
+.proj-item:hover .main img{transform:scale(1.04)}
+.proj-media .inset{position:absolute;width:40%;aspect-ratio:1;overflow:hidden;bottom:-42px;right:-28px;border:9px solid var(--paper);box-shadow:0 20px 44px rgba(60,45,25,.18)}
+.proj-item.flip .proj-media .inset{right:auto;left:-28px}
+.proj-num{font-family:'Jost',sans-serif;font-weight:400;letter-spacing:.34em;font-size:11px;color:var(--brass)}
+.proj-item h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3.1vw,44px);line-height:1.08;margin:14px 0 0}
+.proj-item .meta{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:10.5px;color:var(--muted);margin-top:12px}
+.proj-item .rule-sm{width:38px;height:1px;background:var(--brass);margin:22px 0}
+.proj-item .desc{color:var(--muted);font-size:15.5px}
+.proj-item .count{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:10px;color:var(--muted);margin-top:16px}
+.proj-item .more{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:var(--ever);margin-top:24px;display:inline-block;border-bottom:1px solid var(--brass);padding-bottom:4px;transition:.3s}
+.proj-item:hover .more{color:var(--brass);letter-spacing:.26em}
+@media(max-width:900px){
+  .proj-list{gap:76px}
+  .proj-item,.proj-item.flip{grid-template-columns:1fr;gap:26px}
+  .proj-item.flip .proj-media{order:0}
+  .proj-media .inset{display:none}
+}
